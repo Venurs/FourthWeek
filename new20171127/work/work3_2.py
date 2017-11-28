@@ -12,5 +12,8 @@ def product(n):
             continue
         list1.append(num)
     return list1
-print(list1)
+
+
+if __name__ == '__main__':
+    print(product(10))
 
