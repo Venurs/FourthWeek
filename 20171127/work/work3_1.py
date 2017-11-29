@@ -15,4 +15,7 @@ for i in range(97, 123):
 for i in range(65, 91):
     str1 = str1 + chr(i)
 print(str1)
-print(random.sample(str1, 4))
+list1 = []
+for i in range(1, 5):
+    list1.append(random.choice(str1))
+print(list1)

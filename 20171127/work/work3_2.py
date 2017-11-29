@@ -4,11 +4,13 @@
 import random
 
 
-list1 = []
-while len(list1) < 10:
-    num = random.randint(1, 10)
-    if num in list1:
-        continue
-    list1.append(num)
+def product(n):
+    list1 = []
+    while len(list1) < 10:
+        num = random.randint(1, n)
+        if num in list1:
+            continue
+        list1.append(num)
+    return list1
 print(list1)
 
