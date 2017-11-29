@@ -3,9 +3,12 @@
 """
 import random
 
-set1 = set()
-while len(set1) < 10:
-    set1.add(random.randint(1, 10))
-print(set1)
-print(list(set1))
+
+list1 = []
+while len(list1) < 10:
+    num = random.randint(1, 10)
+    if num in list1:
+        continue
+    list1.append(num)
+print(list1)
 
