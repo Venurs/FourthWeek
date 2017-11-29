@@ -1,0 +1,35 @@
+第一部分：
+消化课堂代码
+整理笔记
+
+第二部分：
+1.匹配出163的邮箱地址，且@符号前有4-20位。例如hello@163.com
+
+2.请提取url
+	提取url：以https开头，jpg结束
+
+<img data-original="https://rpic.douyucdn.cn/appCovers/2016/11/13/1213973_201611131917_small.jpg" src="https://rpic.douyucdn.cn/appCovers/2016/11/13/1213973_201611131917_small.jpg" style="display: inline;">
+
+3.
+有一批网址：
+
+http://www.interoem.com/messageinfo.asp?id=35
+http://3995503.com/class/class09/news_show.asp?id=14
+http://lib.wzmc.edu.cn/news/onews.asp?id=769
+http://www.zy-ls.com/alfx.asp?newsid=377&id=6
+http://www.fincm.com/newslist.asp?id=415
+需要 正则后为：
+
+http://www.interoem.com/
+http://3995503.com/
+http://lib.wzmc.edu.cn/
+http://www.zy-ls.com/
+http://www.fincm.com/
+
+
+4.有一句英文如下：
+
+hello world ha ha
+
+查找所有的单词
+    

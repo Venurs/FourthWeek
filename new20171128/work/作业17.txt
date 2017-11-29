@@ -1,0 +1,41 @@
+第一部分：
+消化课堂代码
+笔记
+
+第二部分：
+1.使用namedtuple创建一个平面的圆。
+	3个属性值：x，y表示圆心位置，r表示半径
+
+
+
+2.使用deque，完成学生姓名管理系统。
+	append(),appendleft()
+	pop(),popleft(),remove()
+	..
+
+
+3.选班长：
+	step1：初始化候选人的信息：
+		
+		[Rose，Jack，王二狗，李小花，三胖]
+
+	step2：投票：
+		[]
+		Rose
+		Jack
+		Rose
+		Jack
+		Rose
+		Rose
+		Rose1-->无效
+		如花-->无效
+		弃权-->无效
+		[Rose,Jack,Rose,Jack,Rose,Rose]
+		
+	step3：公布结果
+		Rose当先班长，鼓掌，撒花。。
+
+
+
+附加：
+	Rose，Jack票数相同。？

@@ -1,0 +1,260 @@
+上节课回顾：
+1.模块的使用
+	主模块：
+	导入模块
+
+a.py
+	-->执行，将a.py按照主模块执行
+	 	__name__-->模块名："__main__"
+
+demo.py
+	import a
+	-->执行，将a按照导入的模块来执行
+		__name__-->模块名
+
+
+语法：
+import 模块名
+	模块名.函数()
+	模块名.类名()
+
+
+import 模块名 as 别名
+	别名.函数()
+	别名.类名()
+
+
+from 模块名 import 函数名,类名
+	函数名()
+	类名()
+
+from 模块名 import *
+
+
+包：package
+	一个特殊的目录：
+		init.py
+			定义导入包，提供的模块列表
+			from . import 模块名
+			__all__ = ["模块名",....]
+搜索路径：
+	sys.path-->[搜索路径]
+	sys.path.append-->[]
+
+2.核心模块
+A：日期
+	datetime：日期，时间
+		import datetime
+			datetime.datetime.now()-->当前的时间：datetime对象。today()
+			实例属性：year，month，day，hour，minute，second，microsecond，weekday，isoweekday
+			类属性：max，min
+			时间戳：timestamp：当前的时间，距离1970年1月1日，0:0:0，秒
+				时间对象.timestamp()-->时间戳
+				datetime.fromtiemstamp(时间戳)-->时间对象
+			日期和字符串之间的转换：
+				%Y,%m,%d,%H,%M,%S
+				字符串-->日期对象
+					datetiem.strptime(string,模板)
+
+				日期对象-->字符串
+					日期对象.strftime(模板)
+
+			日期的加减：timedelta类，日期间隔对象
+				timedelta(days=..,hours=..,months=...)
+				日期对象：datetime + / timedelta
+
+			
+	time：
+		time.sleep(秒)
+B：系统
+C：随机数
+	import random
+	random()
+	randint(a,b)
+	randrange(start,stop,step)
+	uniform(a,b)
+	choice(sequence)-->从序列中随机获取：字符串，列表，元组
+	shuffle(list)-->打乱
+	sample(list,个数)-->取样
+D：拷贝
+	浅拷贝和深拷贝
+		a = b
+		copy.deepcopy()
+
+
+
+类：
+	同一类事物的抽象描述
+
+对象：
+	类中一个具体的实例
+
+
+描述类：
+	属性和方法
+
+	类属性：属于类，仅一份
+	实例属性：属于对象
+
+	类方法：(cls),可以访问类属性
+	实例方法：(self),可以访问实例属性，还可以访问类属性
+	静态方法：(),不可以访问类属性，也不可以访问实例属性。
+
+
+	属性，也叫作字段。field
+	方法，method
+
+
+
+
+type(变量)-->获取该变量的类型
+isinstance(变量，类型)-->bool
+issubclass(子类名，父类名)-->bool
+
+
+列表和队列
+
+
+
+namedtuple()-->自定义的tuple
+	tuple(0, 0)
+
+	namedtuple()-->x,y
+	tuple(x=0,y=0)
+
+	
+
+	
+deque：双端队列
+	容器：存储特点同list列表
+		有序，可以重复
+
+		遍历：list
+		插入，删除：deque
+
+
+
+
+
+Counter：简单的计数器
+
+count = 0
+
+while xx:
+	if xxx:
+		count += 1
+
+
+count-->计数器
+
+
+
+网络地址：-->json数据-->程序中
+存储到本地中-->本地文件
+字典
+
+json：
+	程序中的地点中的数据--->本地文件中
+
+	本地文件中--->程序中
+
+
+
+字典：存储的名值对的组合
+	--->存储到本地文件中
+
+
+本地文件：本质都是二进制文件。存储都是01码。
+
+file.write("a")--->97
+		-->二进制
+file.write("97")--->5755
+		-->二进制
+
+
+字符--->存入到本地文件中，通过编码来存储
+	
+
+编码表：gbk，utf-8，大五码。。。
+	字符-->编码数值
+
+
+字典：
+dict2 = {
+    "name": "李小花",
+    "age": 17,
+    "friends": ["王二狗", "马冬梅"],
+    "height": float(160.3),
+    "a": lambda: "我是一个函数返回值a"
+}
+
+对象-->二进制编码
+	序列化(二进制序列)
+
+
+二进制编码-->对象
+	反序列化(对象)
+
+
+
+json：JavaScript Object Notation。
+	网络上传输数据常用的数据交换格式。
+
+json中数据-->python：字典
+	都是无序的名值对组合
+
+
+
+1.程序中字典--->本地文件中
+	对象的序列化：
+		字典(对象)--->本地文件(二进制文件)
+
+	对象的反序列化：
+		本地文件(二进制数据)--->对象
+
+
+json模块：
+	序列化：
+		json.dump(对象,文件，关键字参数)
+
+	反序列化：
+		json.load(file)-->对象
+	
+
+
+
+模块：collections
+	1.namedtuple
+		tuple
+
+	2.deque，双端队列
+		list--->
+	3.dict	
+		Counter，计数器
+		defaultdict，默认值字典
+		OrderedDict，有序字典
+
+	
+json：
+	json：常用于网络交换的数据格式。
+		无序的名值对组合
+
+
+python：
+	dict：无序的名值对组合
+
+	
+
+
+程序：字典对象--->本地文件：序列化
+	json.dump(obj,file)
+
+
+本地文件--->程序：字典对象：反序列化
+	json.load(file)-->obj
+
+
+正则表达式：
+
+
+

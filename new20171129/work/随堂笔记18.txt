@@ -1,0 +1,115 @@
+上节课回顾：
+模块和核心模块
+1.模块
+	import 模块名 [as 别名]
+		
+	from 模块名 import 函数,类
+
+		
+2.核心模块：
+	random
+	datetime
+	time
+	sys
+	collections
+		namedtuple：
+			元组：tuple(10, 20)
+				p1 = Point(x=10,y=20)
+				p1[index] = 10
+				p1.x = 10
+
+		deque：双端队列
+			队列
+				存储特点：插入，删除
+		list：列表
+			遍历
+		Counter：计数器
+			Counter(字符串，列表，元组。。)
+				most_common(n)-->
+				elements()-->可迭代的序列
+
+		defaultdict：默认值的字典
+			defaultdict(函数/。。。)
+			根据key获取value，如果不存在可以获取默认值
+
+		OrderedDict：有序的字典，存储的顺序
+		
+
+
+正则表达式
+^&**(^%$%^***----(*-*)
+memda
+
+
+IGNORECASE：忽略大小写
+ignore,忽略
+case，字母
+
+总结：
+一、概念：
+	正则表达式：描述规则的表达式
+	regular expression
+
+	用途：使用正则，验证文本字符串是否满足。
+
+二、规则：
+	1.一般符号
+		A：字面量
+		B：.，任意字符，除\n，
+		C：[abc],abc中的任意一个
+		D：[a-zA-Z],所有的字母，大小写
+		E：[0-9],所有的数字
+		F：[^abc],除abc外的所有字符
+
+
+	2.特殊符号：
+		A：\d,代表0-9的数字，同[0-9]
+		B：\D,与\d相反，除0-9，同[^0-9]
+		C：\w,代表单词字符：a-z,A-Z,0-9,_
+			同[a-zA-Z0-9_]
+		D：\W
+		E：\b,单词边界
+		F：\B,
+		G：\s,空白字符，空格，tab键，\n,\r,\t
+			\S
+	
+	3.数量词
+		A：+，匹配1-多个
+		B：*，匹配0-多个
+		C：？，匹配0-1个
+		D：{m}，刚好m个
+		E：{m，}，至少m个
+		F：{m，n}，至少m个，至多n个
+
+	4.转义字符和原始字符串
+		A：.,\需要转义	
+		B：r""
+
+	5.描述边界：
+		A：^,代表开始
+		B：$,代表结束
+
+	6.分组：
+		A：abc|bbc，abc或bbc都可以
+		B：(abc),代表abc是一个组。
+			每个组都有编号：1,2,3
+		C：\num,引用组的内容：\1,\2
+		D：(?P<name>),给组起别名，
+		E：(?P=name),引用起别名后的组
+
+	--->正则表达式：r"^......$"
+
+三、方法：
+	1.match(),匹配，从头开始
+	2.search(),查找，
+	3.group(),获取匹配后的内容：
+		group(0),group(1)....
+		groups()-->tuple
+	4.findall()-->[]获取所有匹配成功的内容
+	5.sub(pattern,repl,s1)-->替换
+		repl--->函数的返回值作为替换的内容
+	6.split(pattern)-->[],按照指定的正则规则来切割
+	7.compile(),编译
+
+四、标志位：
+	flags-->re.I，忽略大小写
