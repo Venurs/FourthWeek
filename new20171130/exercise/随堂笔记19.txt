@@ -1,0 +1,280 @@
+上节课回顾：
+正则：
+1.概念（regular expression）
+	规则，规律
+
+	用于验证文本字符串
+
+2.规则：
+普通的符号：
+.字面量,[abcA-Z],[^abc]
+
+特殊的符号：
+\d,\D,
+\w,[a-zA-Z0-9_],\W
+\s,空白字符：空格，tab键...
+\S
+\b,单词边界：
+	"today is"
+\B
+
+数量词：
+?,+,*,{m},{m,},{m,n}
+
+边界：
+^,$
+
+转义字符和原始字符串
+	.,\,\b
+
+	\.,\\
+
+	r""
+
+分组：
+|，或者
+	abc|ddd\d
+(),分组，编号数值1,2,3,4...
+\num,引用分组
+(?P<name>),起别名
+(?P=name)。。。
+
+方法：
+1.match(),匹配，从文本的开头。。
+2.search(),搜索，
+	group()-->
+		group(1,2,3)
+		group("别名")
+		groups()-->()
+
+3.findall()-->[]
+4.sub(pattern,repl,string)
+	str.replace(old,new)
+
+5.split(pattern)
+6.compile()-->
+
+
+
+进程：
+	也叫任务
+	理解为正在进程中(正在执行)的程序。
+
+
+继承的执行：
+	A：CPU
+	B：内存
+
+	电脑：单核
+		cpu-->执行一个程序
+
+	      双核，多核。。
+
+
+	同时：同一个时间点
+
+		单核：
+			
+	
+
+	同时执行多个进程(也叫多任务)
+
+
+python中：执行一个程序的时候，执行一个进程。
+	主进程：
+
+
+multi，多个
+process，进程
+
+multiprocessing包名
+	提供多进程
+
+	Process类：表示进程类
+
+创建Process类的对象
+	子进程
+
+	start(),启动该进程
+		--->让cpu执行该进程(子进程)
+
+
+进程：概念
+	一个正在被执行的程序。
+		进程：正在进行的程序
+
+
+
+操作系统：
+	正在执行的程序
+		vnc-->通过用户的双击
+		pycharm
+		有道词典
+		记事本
+		。。。。
+
+
+
+任务：干活
+	cpu在干活--->cpu执行任务--->cpu执行进程
+
+
+
+python支持多进程：
+
+	1.运行py程序的时候，创建主进程
+		程序执行的原理：
+			step1：创建主进程：主程序(主模块)
+
+			step2：由程序员在程序中，通过代码创建并启动进程。
+				
+
+
+
+使用子进程：
+	1.方法一：适用于子进程数量较少。
+		p1 = Process(target, args)
+		p1.start()
+
+
+	2.方法二：使用与子进程数量较少。了解
+		class MyProcess(Process):
+			重写init()-->实例属性
+
+			def run():
+				重写run，子进程中要执行的代码
+
+		p2 = MyProcess()
+		p2.start()
+
+	3.方法三：使用进程池，适用于进程数量较大
+		使用一个进程池对象，里面有事先创建好的进程对象，直接分配任务即可。。
+		
+		pool = Pool(num)
+
+		pool.apply_async()，异步方式：非阻塞
+			子进程和主进程同时执行。。。pool.close(),pool.join()
+		pool.apply(),同步方式：阻塞
+			子进程一个一个执行，最后是主进程
+
+
+
+
+多进程：
+	单进程：
+
+
+任务一：从网络上抓取数据
+任务二：数据处理
+任务三：存储到数据库中
+任务四：从数据库中获取数据，展示-->数据
+。。。。
+
+
+进程一：
+一个任务是获取数据，并处理
+
+进程二：
+一个任务是打印输出数据
+
+进程之间的通信：队列，管道，共享内存。。。
+
+	队列
+
+双端链表：
+	可以操作两端
+
+from collections import deque
+	普通的队列：和列表对比使用
+		double-ended queue：双端队列
+		
+
+
+
+from mutilprocessing import Queue
+		队列：
+
+队列：进程之间传递数据的队列
+
+
+总结：
+进程
+一：进程的概念(重要)
+	多进程，多任务
+
+	进程：正在执行中的程序。(进程中的程序)
+		区分：没执行的程序
+
+		正在执行：内存，cpu
+
+	多进程：多个程序同时被运行
+		单核的cpu：同一时间点上只能执行一个进程
+
+			原理：cpu将自己的时间分成时间片,某个时间片上执行一个进程。快速的在多个进程之间切换。由于cpu的计算速度(1秒钟几十亿次)，看起来多个进程同时执行。
+
+
+		真正的多进程：靠多核cpu
+			几个cpu，同时执行几个cpu
+
+
+
+
+二：进程的创建和启动方式
+	python语言支持多进程和多线程
+	
+	python程序执行的原理：
+		右键执行一个py程序的时候，系统来创建并启动一个进程(主进程)。执行py程序中的代码。
+
+	multiprocessing包：Process，Pool，Manager..
+	1.程序中手动的创建并启动子进程：
+		A：通过Process类，创建进程对象并启动(重点)
+			p1 = Process(target=目标函数,name="进程名"，args=())
+			p1.start()-->启动子进程
+		B：通过子类MyProcess(Process):重写run()(了解)
+			class MyProcess(Process):
+				
+				def run(self):
+				
+	2.进程中的方法：
+		start(),启动进程。表示可以被cpu执行。默认执行target指明的内容，如果没有target，就执行run()
+		run(),	没有target，默认执行run
+		is_alive(),进程是否存活
+		join()，等待进程结束。。主进程中p1.join(),阻塞主进程的执行
+			主进程(父进程)创建了子进程：主进程不能再子进程结束之前结束。
+		terminate(),终止进程。无论进程是否执行完任务。
+		name：进程的名字。默认Process-1,2...
+	
+	补充：
+		os.getpid()-->获取进程的pid。
+		os.getppid()-->获取父进程的pid。
+
+			
+
+三：进程池
+	使用进程池，已经创建好一些进程对象，直接分配任务即可。
+	Pool(num)-->进程的数量
+		Pool(num,target,args)-->异步
+	分配任务：
+	apply(),进程池中的子进程，同步执行：one by one，最后主进程
+
+	apply_async(fun,参数),进程中的子进程，异步执行：同时执行。
+		pool.close(),
+		pool.join()
+
+	ApplyResult：是apply_async()的返回值
+		包含异步任务之后的执行结果：get(),获取任务函数的返回值，sucessful()
+	
+	
+
+四：进程之间的消息传递
+	普通进程之间传递消息：Queue队列
+		存储特点：FIFO(First In First Out)
+
+	进程一：队列中存入消息，表示存入队尾
+	进程二：从队列中获取消息，获取队头消息
+
+	Queue：get([block,timeout]),put([block,timeout]),get_nowait(),put_nowait(),qsize(),empty(),full()..
+
+
+	进程池中的进程传递消息：
+		Manger().Queue()-->q
